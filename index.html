@@ -22,17 +22,17 @@
     if (value) {
       navigator.clipboard.writeText(value).then(() => {
         document.getElementById("msg").innerText =
-          "클립보드에 복사되었습니다. (자동으로 닫히지 않으면, 복사 후 수동으로 닫아주세요)";
+          "클립보드에 복사되었습니다. (자동으로 닫히지 않으면, 수동으로 닫아주세요.)";
         tryClose();
       }).catch(err => {
         document.getElementById("msg").innerText =
-          "복사에 실패했습니다. (자동으로 닫히지 않으면, 복사 후 수동으로 닫아주세요)";
+          "복사에 실패했습니다. (자동으로 닫히지 않으면, 수동으로 닫아주세요.)";
         console.error(err);
         tryClose();
       });
     } else {
       document.getElementById("msg").innerText =
-        "복사할 내용이 없습니다. (자동으로 닫히지 않으면, 복사 후 수동으로 닫아주세요)";
+        "복사할 내용이 없습니다. (자동으로 닫히지 않으면, 수동으로 닫아주세요.)";
       tryClose();
     }
   </script>
