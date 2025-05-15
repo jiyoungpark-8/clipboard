@@ -13,15 +13,24 @@
     const url = new URL(window.location.href);
     const value = url.searchParams.get("value");
 
+    function closeAfterDelay() {
+      setTimeout(() => {
+        window.close();
+      }, 2000); // 2초 뒤에 닫기
+    }
+
     if (value) {
       navigator.clipboard.writeText(value).then(() => {
         document.getElementById("msg").innerText = "클립보드에 복사되었습니다.";
+        closeAfterDelay();
       }).catch(err => {
         document.getElementById("msg").innerText = "복사에 실패했습니다.";
         console.error(err);
+        closeAfterDelay();
       });
     } else {
       document.getElementById("msg").innerText = "복사할 내용이 없습니다.";
+      closeAfterDelay();
     }
   </script>
 </body>
