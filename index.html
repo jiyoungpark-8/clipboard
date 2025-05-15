@@ -13,28 +13,26 @@
     const url = new URL(window.location.href);
     const value = url.searchParams.get("value");
 
-    const INFO = " (이 창은 자동으로 닫히지 않습니다. 복사 후 수동으로 닫아주세요)";
-
     function tryClose() {
       setTimeout(() => {
-        if (!window.closed) {
-          document.getElementById("msg").innerText += INFO;
-        }
         window.close();
       }, 2000);
     }
 
     if (value) {
       navigator.clipboard.writeText(value).then(() => {
-        document.getElementById("msg").innerText = "클립보드에 복사되었습니다." + INFO;
+        document.getElementById("msg").innerText =
+          "클립보드에 복사되었습니다. (이 창은 자동으로 닫히지 않습니다. 복사 후 수동으로 닫아주세요)";
         tryClose();
       }).catch(err => {
-        document.getElementById("msg").innerText = "복사에 실패했습니다." + INFO;
+        document.getElementById("msg").innerText =
+          "복사에 실패했습니다. (이 창은 자동으로 닫히지 않습니다. 복사 후 수동으로 닫아주세요)";
         console.error(err);
         tryClose();
       });
     } else {
-      document.getElementById("msg").innerText = "복사할 내용이 없습니다." + INFO;
+      document.getElementById("msg").innerText =
+        "복사할 내용이 없습니다. (이 창은 자동으로 닫히지 않습니다. 복사 후 수동으로 닫아주세요)";
       tryClose();
     }
   </script>
